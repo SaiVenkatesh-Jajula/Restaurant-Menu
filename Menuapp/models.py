@@ -20,8 +20,8 @@ STATUSES =(
 class Menu(models.Model):
     menu_item = models.CharField(max_length=80, choices=MENU_CATEGORY)
     dish_name = models.CharField(max_length=80, unique=True)
-    ingredients = models.CharField(max_length=80)
-    price = models.DecimalField(max_digits=4, decimal_places=2)
+    ingredients = models.CharField(max_length=80, blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     # Many to One relationship
     author = models.ForeignKey(User, on_delete=models.PROTECT)
     status = models.IntegerField(choices=STATUSES, default=1)

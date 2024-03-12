@@ -6,5 +6,19 @@
 </head>
 <body>
 <h1>Food Menu</h1>
+    {% for item in menucategory %}
+        <h2>{{ item.1 }}</h2>
+        {% for row in menu_list %}
+            {% if row.menu_item == item.0 %}
+                {% if row.status == 0 %}
+                    <a href="{% url 'dishdetails' row.pk %}"><h3><del>{{ row.dish_name }}</del></h3></a>
+                    {{ row.ingredients }}
+                {% else %}
+                    <a href="{% url 'dishdetails' row.pk %}"><h3>{{ row.dish_name }}</h3></a>
+                    {{ row.ingredients }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
 </body>
 </html>
